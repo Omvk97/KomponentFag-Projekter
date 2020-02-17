@@ -1,4 +1,9 @@
-package dk.sdu.mmmi.cbse.playersystem;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package dk.sdu.mmmi.cbse.bullet;
 
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
@@ -12,26 +17,26 @@ import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 
 /**
  *
- * @author jcs
+ * @author oliver
  */
-public class PlayerControlSystem implements IEntityProcessingService {
+public class BulletControlSystem implements IEntityProcessingService {
 
     @Override
     public void process(GameData gameData, World world) {
 
-        for (Entity player : world.getEntities(Player.class)) {
-            PositionPart positionPart = player.getPart(PositionPart.class);
-            MovingPart movingPart = player.getPart(MovingPart.class);
+        for (Entity bullet : world.getEntities(Bullet.class)) {
+            PositionPart positionPart = bullet.getPart(PositionPart.class);
+            MovingPart movingPart = bullet.getPart(MovingPart.class);
 
             movingPart.setLeft(gameData.getKeys().isDown(LEFT));
             movingPart.setRight(gameData.getKeys().isDown(RIGHT));
             movingPart.setUp(gameData.getKeys().isDown(UP));
             
                       
-            movingPart.process(gameData, player);
-            positionPart.process(gameData, player);
+            movingPart.process(gameData, bullet);
+            positionPart.process(gameData, bullet);
 
-            updateShape(player);
+            updateShape(bullet);
         }
     }
 
