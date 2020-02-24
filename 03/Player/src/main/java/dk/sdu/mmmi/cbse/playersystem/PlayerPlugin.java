@@ -9,6 +9,7 @@ import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.ShootPart;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
+import java.awt.Color;
 
 public class PlayerPlugin implements IGamePluginService {
 
