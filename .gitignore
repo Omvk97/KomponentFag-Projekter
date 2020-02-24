@@ -1,0 +1,14 @@
+/02/Asteroid/target/
+/02/Common/target/
+/02/Core/target/
+/02/Enemy/target/
+/02/Player/target/
+.DS_Store
+.settings
+/02/Collision/target/
+/02/Bullet/target/
+/03/AsteroidsServiceLoader/Common/target/
+/03/AsteroidsServiceLoader/Player/target/
+/03/AsteroidsServiceLoader/Collision/target/
+/03/AsteroidsServiceLoader/Asteroid/target/
+/03/AsteroidsServiceLoader/Core/target/
