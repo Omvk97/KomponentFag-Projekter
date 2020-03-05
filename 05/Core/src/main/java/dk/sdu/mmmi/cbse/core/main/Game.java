@@ -11,23 +11,24 @@ import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 import dk.sdu.mmmi.cbse.common.services.IPostEntityProcessingService;
-import dk.sdu.mmmi.cbse.managers.GameInputProcessor;
-import java.util.ArrayList;
+import dk.sdu.mmmi.cbse.core.managers.GameInputProcessor;
 import java.util.Collection;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 import org.openide.util.Lookup;
+import org.openide.util.LookupEvent;
+import org.openide.util.LookupListener;
 
 public class Game
         implements ApplicationListener {
 
     private static OrthographicCamera cam;
     private ShapeRenderer sr;
-    private Lookup lookup = Lookup.getDefault();
+    private final Lookup lookup = Lookup.getDefault();
     private final GameData gameData = new GameData();
-    private final List<IEntityProcessingService> entityProcessors = new ArrayList<>();
-    private final List<IPostEntityProcessingService> postEntityProcessingServices = new ArrayList<>();
-    private final List<IGamePluginService> entityPlugins = new ArrayList<>();
-    private final World world = new World();
+    private World world = new World();
+    private List<IGamePluginService> gamePlugins = new CopyOnWriteArrayList<>();
+    private Lookup.Result<IGamePluginService> result;
 
     @Override
     public void create() {
@@ -45,9 +46,13 @@ public class Game
                 new GameInputProcessor(gameData)
         );
 
-        // Lookup all Game Plugins using ServiceLoader
-        for (IGamePluginService iGamePlugin : getPluginServices()) {
-            iGamePlugin.start(gameData, world);
+        result = lookup.lookupResult(IGamePluginService.class);
+        result.addLookupListener(lookupListener);
+        result.allItems();
+
+        for (IGamePluginService plugin : result.allInstances()) {
+            plugin.start(gameData, world);
+            gamePlugins.add(plugin);
         }
     }
 
@@ -114,16 +119,41 @@ public class Game
     @Override
     public void dispose() {
     }
-    
-     private Collection<? extends IGamePluginService> getPluginServices() {
-         return lookup.lookupAll(IGamePluginService.class);
+
+    private Collection<? extends IGamePluginService> getPluginServices() {
+        return lookup.lookupAll(IGamePluginService.class);
     }
 
     private Collection<? extends IEntityProcessingService> getEntityProcessingServices() {
         return lookup.lookupAll(IEntityProcessingService.class);
     }
-    
-       private Collection<? extends IPostEntityProcessingService> getPostEntityProcessingServices() {
+
+    private Collection<? extends IPostEntityProcessingService> getPostEntityProcessingServices() {
         return lookup.lookupAll(IPostEntityProcessingService.class);
     }
+
+    private final LookupListener lookupListener = new LookupListener() {
+        @Override
+        public void resultChanged(LookupEvent ev) {
+
+            Collection<? extends IGamePluginService> updated = result.allInstances();
+
+            for (IGamePluginService us : updated) {
+                // Newly installed modules
+                if (!gamePlugins.contains(us)) {
+                    us.start(gameData, world);
+                    gamePlugins.add(us);
+                }
+            }
+
+            // Stop and remove module
+            for (IGamePluginService gs : gamePlugins) {
+                if (!updated.contains(gs)) {
+                    gs.stop(gameData, world);
+                    gamePlugins.remove(gs);
+                }
+            }
+        }
+
+    };
 }

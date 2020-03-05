@@ -1,0 +1,7 @@
+<factorypath>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/netbeans/api/org-netbeans-api-annotations-common/RELEASE112/org-netbeans-api-annotations-common-RELEASE112.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/netbeans/api/org-openide-modules/RELEASE112/org-openide-modules-RELEASE112.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/netbeans/api/org-openide-util/RELEASE112/org-openide-util-RELEASE112.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/netbeans/api/org-openide-util-lookup/RELEASE112/org-openide-util-lookup-RELEASE112.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/netbeans/api/org-openide-util-ui/RELEASE112/org-openide-util-ui-RELEASE112.jar" enabled="true" runInBatchMode="false"/>
+</factorypath>

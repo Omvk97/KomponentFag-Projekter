@@ -1,0 +1,21 @@
+<factorypath>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/netbeans/api/org-netbeans-api-annotations-common/RELEASE112/org-netbeans-api-annotations-common-RELEASE112.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/netbeans/api/org-openide-modules/RELEASE112/org-openide-modules-RELEASE112.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/netbeans/api/org-openide-util-ui/RELEASE112/org-openide-util-ui-RELEASE112.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/netbeans/api/org-openide-util-lookup/RELEASE112/org-openide-util-lookup-RELEASE112.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/netbeans/api/org-netbeans-modules-autoupdate-services/RELEASE112/org-netbeans-modules-autoupdate-services-RELEASE112.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/netbeans/api/org-netbeans-api-progress/RELEASE112/org-netbeans-api-progress-RELEASE112.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/netbeans/api/org-netbeans-api-progress-nb/RELEASE112/org-netbeans-api-progress-nb-RELEASE112.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/netbeans/api/org-openide-awt/RELEASE112/org-openide-awt-RELEASE112.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/netbeans/modules/org-netbeans-bootstrap/RELEASE112/org-netbeans-bootstrap-RELEASE112.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/netbeans/modules/org-netbeans-core-startup/RELEASE112/org-netbeans-core-startup-RELEASE112.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/netbeans/api/org-netbeans-libs-asm/RELEASE112/org-netbeans-libs-asm-RELEASE112.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/ow2/asm/asm-all/5.0.1/asm-all-5.0.1.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/netbeans/modules/org-netbeans-core-startup-base/RELEASE112/org-netbeans-core-startup-base-RELEASE112.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/netbeans/api/org-openide-filesystems/RELEASE112/org-openide-filesystems-RELEASE112.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/netbeans/external/updater/RELEASE112/updater-RELEASE112.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/netbeans/api/org-openide-io/RELEASE112/org-openide-io-RELEASE112.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/netbeans/api/org-netbeans-api-intent/RELEASE112/org-netbeans-api-intent-RELEASE112.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/netbeans/api/org-netbeans-api-io/RELEASE112/org-netbeans-api-io-RELEASE112.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/netbeans/api/org-openide-util/RELEASE112/org-openide-util-RELEASE112.jar" enabled="true" runInBatchMode="false"/>
+</factorypath>
