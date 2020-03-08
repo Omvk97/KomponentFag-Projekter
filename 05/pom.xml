@@ -67,8 +67,8 @@
         <module>Enemy</module>
         <module>Bullet</module>
         <module>Asteroid</module>
-        <module>Collision</module>
         <module>SilentUpdate</module>
+        <module>Collision</module>
     </modules>
 
     <properties>

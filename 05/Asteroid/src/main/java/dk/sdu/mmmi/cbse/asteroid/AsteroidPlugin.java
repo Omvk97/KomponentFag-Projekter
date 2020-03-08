@@ -13,7 +13,6 @@ import dk.sdu.mmmi.cbse.common.data.entityparts.IdentityPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
-import dk.sdu.mmmi.cbse.common.services.IPostEntityProcessingService;
 import java.util.Random;
 import org.openide.util.lookup.ServiceProvider;
 import org.openide.util.lookup.ServiceProviders;
@@ -23,10 +22,9 @@ import org.openide.util.lookup.ServiceProviders;
  * @author oliver
  */
 @ServiceProviders(value = {
-    @ServiceProvider(service = IGamePluginService.class),
-    @ServiceProvider(service = IPostEntityProcessingService.class)
+    @ServiceProvider(service = IGamePluginService.class)
 })
-public class AsteroidPlugin implements IGamePluginService, IPostEntityProcessingService {
+public class AsteroidPlugin implements IGamePluginService {
 
     private Entity asteroid;
 
@@ -64,14 +62,8 @@ public class AsteroidPlugin implements IGamePluginService, IPostEntityProcessing
     @Override
     public void stop(GameData gameData, World world) {
         // Remove entities
-        world.removeEntity(asteroid);
-    }
-
-    @Override
-    public void process(GameData gameData, World world) {
         for (Entity asteroid : world.getEntities(Asteroid.class)) {
             world.removeEntity(asteroid);
         }
     }
-
 }

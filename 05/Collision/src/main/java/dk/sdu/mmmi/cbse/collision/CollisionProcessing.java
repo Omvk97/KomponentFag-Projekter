@@ -56,5 +56,4 @@ public class CollisionProcessing implements IPostEntityProcessingService {
             }
         }
     }
-
 }
