@@ -1,3 +1,3 @@
-Bundle-SymbolicName: AsteroidOSGIBundle
+Bundle-SymbolicName: CollisionOSGIBundle
 Bundle-ActivationPolicy: lazy
 Service-Component: META-INF/entityprocessor.xml, META-INF/gameplugin.xml

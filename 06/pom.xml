@@ -30,6 +30,8 @@
     <module>Enemy</module>
     <module>Player</module>
     <module>Asteroid</module>
+    <module>Bullet</module>
+    <module>Collision</module>
   </modules>
 
     <build>
