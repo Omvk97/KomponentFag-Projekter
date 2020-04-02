@@ -5,22 +5,23 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import dk.sdu.mmmi.cbse.asteroid.AsteroidControlSystem;
-import dk.sdu.mmmi.cbse.bullet.BulletControlSystem;
-import dk.sdu.mmmi.cbse.collision.CollisionProcessing;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 import dk.sdu.mmmi.cbse.common.services.IPostEntityProcessingService;
-import dk.sdu.mmmi.cbse.enemy.EnemyControlSystem;
-import dk.sdu.mmmi.cbse.enemy.EnemyPlugin;
 import dk.sdu.mmmi.cbse.managers.GameInputProcessor;
 import dk.sdu.mmmi.cbse.common.util.SPILocator;
+import dk.sdu.mmmi.cbse.enemy.EnemyControlSystem;
+import dk.sdu.mmmi.cbse.enemy.EnemyPlugin;
+import dk.sdu.mmmi.cbse.playersystem.PlayerControlSystem;
+import dk.sdu.mmmi.cbse.playersystem.PlayerPlugin;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Game
         implements ApplicationListener {
@@ -33,6 +34,7 @@ public class Game
     private final List<IPostEntityProcessingService> postEntityProcessingServices = new ArrayList<>();
     private final List<IGamePluginService> entityPlugins = new ArrayList<>();
     private final World world = new World();
+    private ApplicationContext context;
 
     @Override
     public void create() {
@@ -50,6 +52,8 @@ public class Game
                 new GameInputProcessor(gameData)
         );
         
+        context = new ClassPathXmlApplicationContext("Beans.xml");
+
         // Lookup all Game Plugins using ServiceLoader
         for (IGamePluginService iGamePlugin : getPluginServices()) {
             iGamePlugin.start(gameData, world);
@@ -121,11 +125,28 @@ public class Game
     }
     
      private Collection<? extends IGamePluginService> getPluginServices() {
-        return SPILocator.locateAll(IGamePluginService.class);
+        List<IGamePluginService> gamePluginServices = new ArrayList<>();
+        EnemyPlugin enemyPlugin = (EnemyPlugin) context.getBean("enemyPluginBean");
+        gamePluginServices.add(enemyPlugin);
+        PlayerPlugin playerPlugin = (PlayerPlugin) context.getBean("playerPluginBean");
+        gamePluginServices.add(playerPlugin);
+        
+        gamePluginServices.addAll(SPILocator.locateAll(IGamePluginService.class));
+        
+        return gamePluginServices;
     }
 
     private Collection<? extends IEntityProcessingService> getEntityProcessingServices() {
-        return SPILocator.locateAll(IEntityProcessingService.class);
+        List<IEntityProcessingService> processingServices = new ArrayList<>();
+        EnemyControlSystem enemyControlSystem = (EnemyControlSystem) context.getBean("enemyControlSystemBean");
+        processingServices.add(enemyControlSystem);
+        
+        PlayerControlSystem playerControlSystem = (PlayerControlSystem) context.getBean("playerControlSystemBean");
+        processingServices.add(playerControlSystem);
+        
+        processingServices.addAll(SPILocator.locateAll(IEntityProcessingService.class));
+        
+        return processingServices;
     }
     
        private Collection<? extends IPostEntityProcessingService> getPostEntityProcessingServices() {

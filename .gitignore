@@ -8,3 +8,10 @@
 .classpath
 .factorypath
 /*/runner
+/07-SpringLab/03-JavaLab/Asteroid/target/
+/07-SpringLab/03-JavaLab/Bullet/target/
+/07-SpringLab/03-JavaLab/Collision/target/
+/07-SpringLab/03-JavaLab/Common/target/
+/07-SpringLab/03-JavaLab/Core/target/
+/07-SpringLab/03-JavaLab/Enemy/target/
+/07-SpringLab/03-JavaLab/Player/target/

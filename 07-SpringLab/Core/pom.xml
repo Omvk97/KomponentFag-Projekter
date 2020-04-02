@@ -70,6 +70,12 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
+            <groupId>dk.sdu.mmmi.cbse</groupId>
+            <artifactId>Enemy</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>Asteroid</artifactId>
             <version>${project.version}</version>
@@ -87,13 +93,13 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>Enemy</artifactId>
+            <artifactId>Player</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>Player</artifactId>
-            <version>${project.version}</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>4.1.5.RELEASE</version>
         </dependency>
     </dependencies>
     <build>
